@@ -28,6 +28,7 @@ class MySportsFeeds {
     enum APICategory {
         case players
         case seasonalStandings
+        case seasonalPlayerGamelogs
     }
     
 //    let urlString = "https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019-regular/standings.json"
@@ -68,6 +69,12 @@ class MySportsFeeds {
                     DispatchQueue.main.async {
                         completion?(teams)
 
+                    }
+                }
+            case .seasonalPlayerGamelogs:
+                if let playerGamelogs = JsonParser.forPlayerGamelogs(data: responseData) {
+                    DispatchQueue.main.async {
+                        completion?(playerGamelogs)
                     }
                 }
             }
