@@ -97,7 +97,7 @@ class DataModel {
                 return
             }
             DispatchQueue.main.async {
-                completion?(data.playerGamelogs)
+                completion?(data.gamelogs)
             }
         }
     }
